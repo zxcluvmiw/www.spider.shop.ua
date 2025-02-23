@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Продаж пауків</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .product { margin-bottom: 20px; }
+        .product img { width: 150px; }
+        .cart { margin-top: 20px; }
+        button { padding: 10px 15px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <h1>Продаж пауків</h1>
+
+    <div class="product">
+        <img src="spider1.jpg" alt="Брахипельма ваганс">
+        <h2>Брахипельма ваганс (6 см, самка)</h2>
+        <p>Ціна: 1200 грн</p>
+        <button onclick="addToCart('Брахипельма ваганс (6 см, самка)', 1200)">Додати в кошик</button>
+    </div>
+
+    <div class="product">
+        <img src="spider2.jpg" alt="Бразипельма альбопилосум">
+        <h2>Бразипельма альбопилосум (11 л, самка)</h2>
+        <p>Ціна: 1000 грн</p>
+        <button onclick="addToCart('Бразипельма альбопилосум (11 л, самка)', 1000)">Додати в кошик</button>
+    </div>
+
+    <div class="product">
+        <img src="spider3.jpg" alt="Давус фасциатум">
+        <h2>Давус фасциатум (8 л, самец)</h2>
+        <p>Ціна: 1000 грн</p>
+        <button onclick="addToCart('Давус фасциатум (8 л, самец)', 1000)">Додати в кошик</button>
+    </div>
+
+    <div class="product">
+        <img src="spider4.jpg" alt="Аконтаскурия геникулята">
+        <h2>Аконтаскурия геникулята (7 л, самка)</h2>
+        <p>Ціна: 1000 грн</p>
+        <button onclick="addToCart('Аконтаскурия геникулята (7 л, самка)', 1000)">Додати в кошик</button>
+    </div>
+
+    <h2>Ваш кошик</h2>
+    <div id="cart" class="cart"></div>
+
+    <button onclick="submitOrder()">Оформити замовлення</button>
+
+    <h2>Контакти</h2>
+    <p>Телеграм: <a href="https://t.me/REVENGE_LOVE_A" target="_blank">@REVENGE_LOVE_A</a></p>
+    <p>Номер: +380 95 396 96 67</p>
+
+    <script>
+        let cart = [];
+
+        function addToCart(product, price) {
+            cart.push({ product, price });
+            displayCart();
+        }
+
+        function displayCart() {
+            const cartDiv = document.getElementById('cart');
+            cartDiv.innerHTML = cart.map(item => `<p>${item.product} - ${item.price} грн</p>`).join('');
+        }
+
+        function submitOrder() {
+            const orderDetails = cart.map(item => `${item.product} - ${item.price} грн`).join('\n');
+            alert('Ваше замовлення:\n' + orderDetails + '\n\nДля оформлення замовлення, зв\'яжіться за номером: +380 95 396 96 67');
+            cart = [];  // Очищаем корзину после оформления заказа
+            displayCart();
+        }
+    </script>
+
+</body>
+</html>
